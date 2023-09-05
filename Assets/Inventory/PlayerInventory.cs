@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//If you dont understand, close the application you shouldnt be working
+
 public class PlayerInventory : MonoBehaviourPunCallbacks
 {
     public Inventory inventory;
@@ -44,7 +46,7 @@ public class PlayerInventory : MonoBehaviourPunCallbacks
         if (inHand is not null && inHand.itemType.model is not null)
         {
             GameObject temp;
-            temp = Instantiate(inHand.itemType.model, this.transform.position + new Vector3(1, 0, 0), new Quaternion(0.0f, 0.0f, 0.0f, 1)) as GameObject;
+            temp = PhotonNetwork.Instantiate(inHand.itemType.model.name, this.transform.position + new Vector3(1, 0, -1), new Quaternion(0.0f, 0.0f, 0.0f, 1)) as GameObject;
             temp.GetComponent<InstanceItemContainer>().item.set_amount(inHand.get_amount());
             //NetworkServer.Spawn(temp);
             remove(itemModel);
@@ -68,7 +70,6 @@ public class PlayerInventory : MonoBehaviourPunCallbacks
             }
             else if (itemModel is not null && itemIndex != inventory.items.IndexOf(inHand))
             {
-
                 remove(itemModel);
                 inHand = null;
                 displayItem(itemIndex);

@@ -8,7 +8,7 @@ public class InstanceItemContainer : MonoBehaviourPunCallbacks
     public ItemInstance item;
     public ItemInstance TakeItem()
     {
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
         return item;
     }
 }
