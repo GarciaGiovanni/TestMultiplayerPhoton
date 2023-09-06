@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviourPunCallbacks
 {
     public Inventory inventory;
-    private ItemInstance inHand;
+    public ItemInstance inHand;
     private GameObject itemModel;
     void Start()
     {
@@ -27,20 +27,24 @@ public class PlayerInventory : MonoBehaviourPunCallbacks
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (photonView.IsMine)
         {
-            equip(1, this.transform);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            equip(2, this.transform);
-        }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            drop();
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                photonView.RPC("equip", RpcTarget.AllBuffered, 1, this.transform);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                photonView.RPC("equip", RpcTarget.AllBuffered, 2, this.transform);
+            }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                photonView.RPC("drop", RpcTarget.AllBuffered);
+            }
         }
     }
 
+    [PunRPC]
     public void drop()
     {
         if (inHand is not null && inHand.itemType.model is not null)
@@ -48,13 +52,13 @@ public class PlayerInventory : MonoBehaviourPunCallbacks
             GameObject temp;
             temp = PhotonNetwork.Instantiate(inHand.itemType.model.name, this.transform.position + new Vector3(1, 0, -1), new Quaternion(0.0f, 0.0f, 0.0f, 1)) as GameObject;
             temp.GetComponent<InstanceItemContainer>().item.set_amount(inHand.get_amount());
-            //NetworkServer.Spawn(temp);
             remove(itemModel);
             inventory.items.RemoveAt(inventory.items.IndexOf(inHand));
             inHand = null;
         }
     }
 
+    [PunRPC]
     public void equip(int itemIndex, Transform parent)
     {
         if (itemIndex <= inventory.items.Count - 1)

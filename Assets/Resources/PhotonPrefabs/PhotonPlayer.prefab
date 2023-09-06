@@ -52,7 +52,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7f3ea7f65ac744b87f897cb42acfaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultSpeed: 150
 --- !u!114 &2230954502010336263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +130,7 @@ MonoBehaviour:
     SynchronizeEnabled: 1
     TeleportEnabled: 0
     TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 2
+    InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 1
     ExtrapolateOption: 0
@@ -161,6 +160,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: 272ad9cd98c083f45b6fe7391ffd40b2, type: 2}
+  inHand:
+    itemType: {fileID: 0}
+    currentAmount: 0
 --- !u!61 &-4846399955082023386
 BoxCollider2D:
   m_ObjectHideFlags: 0

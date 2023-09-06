@@ -1,3 +1,5 @@
+//AS OF RIGHT NOW DONE!!
+
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +9,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 {
     private Camera cam;
     Rigidbody2D rb;
-    public float defaultSpeed = 150f;
+    private float defaultSpeed = 150f;
     Vector3 moveAmount;
 
     // Start is called before the first frame update
@@ -22,6 +24,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         photonView.RPC("Movement", RpcTarget.AllBuffered);
     }
 
+    //THIS FUNCTION IS A RPC MEANING ITS SENT RIGHT TO THE SERVER
+    //Works better for syncing
     [PunRPC]
     void Movement()
     {
