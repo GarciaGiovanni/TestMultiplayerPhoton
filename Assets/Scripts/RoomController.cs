@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 
 public class RoomController : MonoBehaviourPunCallbacks
@@ -22,6 +23,7 @@ public class RoomController : MonoBehaviourPunCallbacks
         Debug.Log("Joined Room");
         StartGame();
     }
+
 
     private void StartGame()
     {

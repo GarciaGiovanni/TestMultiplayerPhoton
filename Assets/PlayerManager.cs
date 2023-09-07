@@ -4,24 +4,25 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Tilemaps.Tilemap;
 
 public class PlayerManager : MonoBehaviourPunCallbacks
 {
-    private Camera cam;
     Rigidbody2D rb;
     private float defaultSpeed = 150f;
-    Vector3 moveAmount;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        if (photonView.IsMine)
         rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        photonView.RPC("Movement", RpcTarget.AllBuffered);
+        //Movement();
+        photonView.RPC("Movement", RpcTarget.All);
     }
 
     //THIS FUNCTION IS A RPC MEANING ITS SENT RIGHT TO THE SERVER
@@ -31,7 +32,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
         {
-            Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * defaultSpeed * Time.deltaTime;
+            Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * defaultSpeed * Time.fixedDeltaTime;
             rb.velocity = move;
         }
     }

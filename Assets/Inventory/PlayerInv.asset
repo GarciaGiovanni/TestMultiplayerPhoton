@@ -16,6 +16,8 @@ MonoBehaviour:
   items:
   - itemType: {fileID: 11400000, guid: 8932c3f748afaa3419e90ef3bd563b70, type: 2}
     currentAmount: 1
+  - itemType: {fileID: 11400000, guid: 8932c3f748afaa3419e90ef3bd563b70, type: 2}
+    currentAmount: 1
   inHand:
     itemType: {fileID: 0}
     currentAmount: 0

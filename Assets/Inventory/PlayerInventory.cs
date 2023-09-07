@@ -12,11 +12,13 @@ public class PlayerInventory : MonoBehaviourPunCallbacks
     private GameObject itemModel;
     void Start()
     {
-        if (inHand is not null && inHand.itemType.model is not null)
-        {
-            itemModel = Instantiate(inHand.itemType.model, this.transform.position + new Vector3(-1, 0.5f, 0), new Quaternion(0.0f, 0.0f, 0.0f, 1), this.transform) as GameObject;
-        }
+        //if (inHand is not null && inHand.itemType.model is not null)
+        //{
+        //    itemModel = Instantiate(inHand.itemType.model, this.transform.position + new Vector3(-1, 0.5f, 0), new Quaternion(0.0f, 0.0f, 0.0f, 1), this.transform) as GameObject;
+        //}
     }
+
+    //Almost Done Need To Fix HitBoxes
     private void OnTriggerStay2D(Collider2D other)
     {
         if (Input.GetKeyDown(KeyCode.E) && other.TryGetComponent(out InstanceItemContainer foundItem) && !inventory.get_size_left())
@@ -31,11 +33,7 @@ public class PlayerInventory : MonoBehaviourPunCallbacks
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                photonView.RPC("equip", RpcTarget.AllBuffered, 1, this.transform);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                photonView.RPC("equip", RpcTarget.AllBuffered, 2, this.transform);
+                photonView.RPC("equip", RpcTarget.AllBuffered, 1);
             }
             if (Input.GetKeyDown(KeyCode.Q))
             {
@@ -50,7 +48,7 @@ public class PlayerInventory : MonoBehaviourPunCallbacks
         if (inHand is not null && inHand.itemType.model is not null)
         {
             GameObject temp;
-            temp = PhotonNetwork.Instantiate(inHand.itemType.model.name, this.transform.position + new Vector3(1, 0, -1), new Quaternion(0.0f, 0.0f, 0.0f, 1)) as GameObject;
+            temp = PhotonNetwork.InstantiateRoomObject(inHand.itemType.model.name, this.transform.position + new Vector3(1, 0, -1), new Quaternion(0.0f, 0.0f, 0.0f, 1));
             temp.GetComponent<InstanceItemContainer>().item.set_amount(inHand.get_amount());
             remove(itemModel);
             inventory.items.RemoveAt(inventory.items.IndexOf(inHand));
@@ -59,7 +57,7 @@ public class PlayerInventory : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    public void equip(int itemIndex, Transform parent)
+    public void equip(int itemIndex)
     {
         if (itemIndex <= inventory.items.Count - 1)
         {
@@ -89,5 +87,7 @@ public class PlayerInventory : MonoBehaviourPunCallbacks
         itemModel = Instantiate(inventory.items[index].itemType.model, this.transform.position + new Vector3(-1, 0.5f, 0), new Quaternion(0.0f, 0.0f, 0.0f, 1), this.transform) as GameObject;
         inHand = inventory.items[index];
     }
+
+
 
 }
