@@ -21,13 +21,13 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Movement();
-        photonView.RPC("Movement", RpcTarget.All);
+        Movement();
+        //photonView.RPC("Movement", RpcTarget.AllBuffered);
     }
 
     //THIS FUNCTION IS A RPC MEANING ITS SENT RIGHT TO THE SERVER
     //Works better for syncing
-    [PunRPC]
+    //[PunRPC]
     void Movement()
     {
         if (photonView.IsMine)

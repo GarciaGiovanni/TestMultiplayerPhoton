@@ -27,7 +27,7 @@ public class PlayerInventory : MonoBehaviourPunCallbacks
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (photonView.IsMine)
         {

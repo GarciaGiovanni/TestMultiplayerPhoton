@@ -23,6 +23,7 @@ public class LobbyController : MonoBehaviourPunCallbacks
 
     public void QuickStart()
     {
+        Debug.Log(PhotonNetwork.IsMasterClient);
         quickStartButton.SetActive(false);
 
         quickCancelButton.SetActive(true);
@@ -40,9 +41,10 @@ public class LobbyController : MonoBehaviourPunCallbacks
     {
         Debug.Log("Creating Room");
         int randomRoomNumber = Random.Range(0, 10000); //Random Number Name For Lobby
-        RoomOptions roomOpts = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)roomSize, CleanupCacheOnLeave = true };
+        RoomOptions roomOpts = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)roomSize, CleanupCacheOnLeave = true  };
         PhotonNetwork.CreateRoom("Room" + randomRoomNumber, roomOpts);
         Debug.Log(randomRoomNumber);
+        PhotonNetwork.JoinRoom("Room" + randomRoomNumber);
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
@@ -55,7 +57,12 @@ public class LobbyController : MonoBehaviourPunCallbacks
     {
         quickCancelButton.SetActive(false);
         quickStartButton.SetActive(true);
-        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.Disconnect();
+    }
+
+    public void AssignUser()
+    {
+        
     }
 
     // Start is called before the first frame update
