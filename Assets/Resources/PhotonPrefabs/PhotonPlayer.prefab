@@ -18,7 +18,9 @@ GameObject:
   - component: {fileID: -4846399955082023386}
   - component: {fileID: 3946347581236918992}
   - component: {fileID: -6614416170710783653}
-  m_Layer: 0
+  - component: {fileID: -3237188043458321020}
+  - component: {fileID: 5566048052036514270}
+  m_Layer: 3
   m_Name: PhotonPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,9 +87,11 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 1
   OwnershipTransfer: 0
-  observableSearch: 0
+  observableSearch: 2
   ObservedComponents:
+  - {fileID: 6764400120468730702}
   - {fileID: -6614416170710783653}
+  - {fileID: -3237188043458321020}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -158,7 +162,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 915266628202407215}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a09e0c208d9511d44af5d6525fd74ef5, type: 3}
   m_Name: 
@@ -237,6 +241,30 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &-3237188043458321020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915266628202407215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074729605335cc54c8b5e4eb68e162ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5566048052036514270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915266628202407215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f688fdf76c929ab47a23090e9dcc3c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1026398231514279434
 GameObject:
   m_ObjectHideFlags: 0
