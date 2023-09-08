@@ -30,6 +30,8 @@ public class RoomController : MonoBehaviourPunCallbacks
             Debug.Log("Starting Game");
             PhotonNetwork.LoadLevel(multiplayerSceneIndex);
         }
+        PhotonNetwork.SendRate = 30;
+        PhotonNetwork.SerializationRate = 10;
     }
 
     // Start is called before the first frame update

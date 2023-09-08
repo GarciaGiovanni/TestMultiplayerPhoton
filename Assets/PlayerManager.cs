@@ -19,10 +19,16 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void FixedUpdate()
     {
+        photonView.RPC("Movement", RpcTarget.AllBuffered);
+    }
+
+    [PunRPC]
+    private void Movement()
+    {
         if (photonView.IsMine)
         {
             Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * defaultSpeed * Time.deltaTime;
             rb.velocity = move;
-        }  
+        }
     }
 }

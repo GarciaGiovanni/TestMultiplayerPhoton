@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8254487587346529282}
   - component: {fileID: -4846399955082023386}
   - component: {fileID: 3946347581236918992}
+  - component: {fileID: -6614416170710783653}
   m_Layer: 0
   m_Name: PhotonPlayer
   m_TagString: Untagged
@@ -82,11 +83,11 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 1
   OwnershipTransfer: 0
-  observableSearch: 2
+  observableSearch: 0
   ObservedComponents:
-  - {fileID: 6764400120468730702}
+  - {fileID: -6614416170710783653}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -130,11 +131,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PositionModel:
-    SynchronizeEnabled: 1
+    SynchronizeEnabled: 0
     TeleportEnabled: 0
-    TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 2
-    InterpolateMoveTowardsSpeed: 1
+    TeleportIfDistanceGreaterThan: 10
+    InterpolateOption: 3
+    InterpolateMoveTowardsSpeed: 150
     InterpolateLerpSpeed: 1
     ExtrapolateOption: 0
     ExtrapolateSpeed: 1
@@ -220,6 +221,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 723e2e1e5f5003f4e8a92667344da201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6614416170710783653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915266628202407215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &1026398231514279434
 GameObject:
   m_ObjectHideFlags: 0
