@@ -13,7 +13,7 @@ public class CameraHandle : MonoBehaviourPunCallbacks
     void Start()
     {
         cameraHolder = transform.GetChild(1).gameObject;
-        offset = cameraHolder.transform.position - new Vector3(0, 0, 40);
+        offset = cameraHolder.transform.position - new Vector3(0, 0, 100);
 
         if (!photonView.IsMine) cameraHolder.SetActive(false); //if current view isnt yours (Current instance of game running) then deactivate that camera
     }
