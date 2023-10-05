@@ -27,18 +27,18 @@ public class LobbyController : MonoBehaviourPunCallbacks
 
         quickCancelButton.SetActive(true);
         PhotonNetwork.JoinRandomRoom();
-        Debug.Log("Quick Start");
+        //Debug.Log("Quick Start");
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
-        Debug.Log("Rooms were full or failed to connect");
+        //Debug.Log("Rooms were full or failed to connect");
         CreateRoom();
     }
 
     public void CreateRoom()
     {
-        Debug.Log("Creating Room");
+        //Debug.Log("Creating Room");
         int randomRoomNumber = Random.Range(0, 10000); //Random Number Name For Lobby
         RoomOptions roomOpts = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)roomSize, CleanupCacheOnLeave = true };
         PhotonNetwork.CreateRoom("Room" + randomRoomNumber, roomOpts);
@@ -47,7 +47,7 @@ public class LobbyController : MonoBehaviourPunCallbacks
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
-        Debug.Log("Failed to create room... trying again");
+        //Debug.Log("Failed to create room... trying again");
         CreateRoom();
     }
 

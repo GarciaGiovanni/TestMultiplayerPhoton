@@ -10,6 +10,7 @@ public class ItemData : ScriptableObject
 
     private int startCondition = 100;
     private int startAmmo = 50;
+    public int dmg;
     public int maxStack;
     public bool isStackable;
 
@@ -20,4 +21,5 @@ public class ItemData : ScriptableObject
     public int get_startingCondition() { return startCondition; }
     public int get_max() { return maxStack; }
     public bool get_stackable() { return isStackable; }
+    public int get_dmg() { return dmg; }
 }

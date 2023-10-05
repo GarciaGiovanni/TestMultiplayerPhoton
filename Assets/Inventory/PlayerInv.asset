@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: PlayerInv
   m_EditorClassIdentifier: 
   maxItems: 10
-  items: []
+  items:
+  - itemType: {fileID: 11400000, guid: 8932c3f748afaa3419e90ef3bd563b70, type: 2}
+    currentAmount: 1
+  - itemType: {fileID: 11400000, guid: 8932c3f748afaa3419e90ef3bd563b70, type: 2}
+    currentAmount: 1
   inHand:
-    itemType: {fileID: 0}
+    itemType: {fileID: 11400000, guid: 8932c3f748afaa3419e90ef3bd563b70, type: 2}
     currentAmount: 0

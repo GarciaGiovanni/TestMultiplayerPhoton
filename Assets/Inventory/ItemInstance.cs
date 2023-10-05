@@ -8,6 +8,7 @@ public class ItemInstance
     private int condition;
     private int ammo;
     private int maxQuantity;
+    private int dmg;
     public int currentAmount;
     public ItemInstance(ItemData itemData)
     {
@@ -17,6 +18,7 @@ public class ItemInstance
         ammo = itemData.get_startingAmmo();
         maxQuantity = itemData.get_max();
         currentAmount = 1;
+        dmg = itemData.get_dmg();
     }
 
     public void add_amount(int i)
@@ -32,6 +34,11 @@ public class ItemInstance
     public int get_amount()
     {
         return currentAmount;
+    }
+
+    public int get_dmg()
+    {
+        return dmg;
     }
 
 }

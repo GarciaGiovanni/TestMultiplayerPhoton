@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviourPunCallbacks
 {
     public Inventory inventory;
-    private ItemInstance inHand;
+    public ItemInstance inHand;
     private GameObject itemModel;
     void Start()
     {
@@ -82,8 +82,13 @@ public class PlayerInventory : MonoBehaviourPunCallbacks
 
     private void displayItem(int index)
     {
-        itemModel = Instantiate(inventory.items[index].itemType.model, this.transform.position + new Vector3(-1, 0.5f, 0), new Quaternion(0.0f, 0.0f, 0.0f, 1), this.transform) as GameObject;
+        //itemModel = Instantiate(inventory.items[index].itemType.model, this.transform.position + new Vector3(-1, 0.5f, 0), new Quaternion(0.0f, 0.0f, 0.0f, 1), this.transform) as GameObject;
         inHand = inventory.items[index];
+    }
+
+    public ItemInstance getEquippedWeapon()
+    {
+        return inHand;
     }
 
 }
